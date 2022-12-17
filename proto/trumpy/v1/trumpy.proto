@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package trumpy.types.v1;
+
+message Token {
+  string address = 1;
+}
+
+message Transfer {
+  string previous_owner = 1;
+  string new_owner = 2;
+}
+
+message Transfers {
+  repeated Transfer transfers = 1;
+}

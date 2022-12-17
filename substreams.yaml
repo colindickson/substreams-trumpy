@@ -1,0 +1,27 @@
+specVersion: v0.1.0
+package:
+  name: trumpy_v3
+  version: v0.1.3-beta
+  url: https://github.com/streamingfast/substreams-trumpy
+  doc: |
+    This is a substream
+
+protobuf:
+  files:
+    - trumpy/v1/trumpy.proto
+  importPaths:
+    - ./proto
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: target/wasm32-unknown-unknown/release/trumpy.wasm
+
+modules:
+  - name: map_transfer_ownership
+    kind: map
+    initialBlock: 36856629
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:trumpy.v1.Transfers
