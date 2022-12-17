@@ -7,10 +7,20 @@ message Token {
 }
 
 message Transfer {
-  string previous_owner = 1;
-  string new_owner = 2;
+  string from = 1;
+  string to = 2;
+  string token_id = 3;
 }
 
 message Transfers {
   repeated Transfer transfers = 1;
+}
+
+message Mint {
+  string minter = 1;
+  int64 number_of_tokens = 2;
+}
+
+message Mints {
+  repeated Mint mints = 1;
 }

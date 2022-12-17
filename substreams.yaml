@@ -1,7 +1,7 @@
 specVersion: v0.1.0
 package:
   name: trumpy_v3
-  version: v0.1.3-beta
+  version: v0.0.0
   url: https://github.com/streamingfast/substreams-trumpy
   doc: |
     This is a substream
@@ -25,3 +25,11 @@ modules:
       - source: sf.ethereum.type.v2.Block
     output:
       type: proto:trumpy.v1.Transfers
+
+  - name: map_mint_several
+    kind: map
+    initialBlock: 36860752
+    inputs:
+      - source: sf.ethereum.type.v2.Block
+    output:
+      type: proto:trumpy.v1.Mints
