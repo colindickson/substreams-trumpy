@@ -6,6 +6,10 @@ package:
   doc: |
     This is a substream
 
+imports:
+  database_changes: https://github.com/streamingfast/substreams-database-change/releases/download/v0.2.0/substreams-database-change-v0.2.0.spkg
+
+
 protobuf:
   files:
     - trumpy/v1/trumpy.proto
@@ -18,18 +22,42 @@ binaries:
     file: target/wasm32-unknown-unknown/release/trumpy.wasm
 
 modules:
-  - name: map_transfer_ownership
+  - name: map_transfers
     kind: map
     initialBlock: 36856629
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:trumpy.v1.Transfers
+      type: proto:trumpy.types.v1.Transfers
 
-  - name: map_mint_several
+  - name: store_transfers
+    kind: store
+    updatePolicy: set
+    valueType: proto:trumpy.types.v1.Transfer
+    inputs:
+      - map: map_transfers
+
+  - name: map_mints
     kind: map
-    initialBlock: 36860752
+    initialBlock: 36856629
     inputs:
       - source: sf.ethereum.type.v2.Block
     output:
-      type: proto:trumpy.v1.Mints
+      type: proto:trumpy.types.v1.Mints
+
+  - name: store_mints
+    kind: store
+    updatePolicy: set
+    valueType: proto:trumpy.types.v1.Mint
+    inputs:
+      - map: map_mints
+
+  - name: db_out
+    kind: map
+    inputs:
+      - store: store_transfers
+        mode: deltas
+      - store: store_mints
+        mode: deltas
+    output:
+      type: proto:substreams.database.v1.DatabaseChanges

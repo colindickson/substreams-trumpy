@@ -12,4 +12,4 @@ pack: build
 
 .PHONY: run
 run: pack
-	substreams run ./trumpy-v3-v0.0.0.spkg map_mint_several -e polygon.streamingfast.io:443 -s 36860752 -t 36860852
+	substreams run ./trumpy-v3-v0.0.0.spkg db_out -e polygon.streamingfast.io:443 -s 36856629 -t +10000

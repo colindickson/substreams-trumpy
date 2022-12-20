@@ -143,6 +143,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
+name = "chrono"
+version = "0.4.23"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "16b0a3d9ed01224b22057780a37bb8c5dbfe1be8ba48678e7bf57ec4b385411f"
+dependencies = [
+ "num-integer",
+ "num-traits",
+]
+
+[[package]]
 name = "constant_time_eq"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -866,10 +876,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "substreams-entity-change"
-version = "0.3.0"
+name = "substreams-database-change"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c81fb0794efb438c5743c821ec76528c38878010c30d4a79d70799eac68837f6"
+checksum = "625548bb5c19c02829049708389e9fcbfc88574873901ac4e2bca5a0ebc73c11"
 dependencies = [
  "base64",
  "prost",
@@ -1032,6 +1042,7 @@ dependencies = [
  "anyhow",
  "base64",
  "bigdecimal",
+ "chrono",
  "ethabi",
  "hex",
  "num-bigint",
@@ -1043,7 +1054,7 @@ dependencies = [
  "stable-hash 0.3.3",
  "stable-hash 0.4.3",
  "substreams",
- "substreams-entity-change",
+ "substreams-database-change",
  "substreams-ethereum",
  "thiserror",
  "wasm-bindgen",

@@ -18,7 +18,7 @@ message Transfers {
 
 message Mint {
   string minter = 1;
-  int64 number_of_tokens = 2;
+  uint64 number_of_tokens = 2;
 }
 
 message Mints {
